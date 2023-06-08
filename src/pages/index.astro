@@ -6,32 +6,111 @@ import "../styles/index.css";
 
 <Layout title="Arael | Portfolio">
 	<main>
-		<h1>Welcome to <span class="text-gradient">my portfolio.</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
+		<div class="w-full text-center mb-1">
+			<h1 class="pb-5 text-4xl">Welcome to <span class="text-gradient">my portfolio.</span></h1>
+		</div>
 		<ul role="list" class="link-card-grid">
 			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
+				href="https://www.linkedin.com/in/jonasgroening/"
+				title="My LinkedIn"
+				body="Connect with me!"
+				target="_blank"
 			/>
 			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
+				href="https://github.com/arael34/"
+				title="My GitHub"
+				body="Check out some source code."
+				target="_blank"
 			/>
 			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
+				href="/portfolio/blog"
+				title="Blog"
+				body="I barely write anything."
 			/>
 			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
+				href="/portfolio/about"
+				title="Contact me"
+				body="Want to get in touch?"
 			/>
 		</ul>
+		<div>
+			<h1 class="text-4xl my-7 text-center">Experience</h1>
+			<div class="flex flex-wrap">
+				<div class="text-box w-1/2">
+					<h3 class="text-xl">Co-Founder at Quarry.video</h3>
+					<p>
+						I'm currently building a tool to help video editors work more efficiently. 
+						You can visit the WIP at <a href="https://quarry.video" target="_blank">quarry.video.</a>
+						I've spent countless hours building features and designing the UI.
+					</p>
+					<p>TODO: tools section</p>
+				</div>
+				<img src="/LandingPage.png" class="mx-auto my-5" />
+				<img src="/SnippetViewer.png" class="mx-auto my-5" />
+				<div class="text-box w-1/2">
+					<p>
+						My contributions include but aren't limited to: building the frontend
+						with NextJS, creating and hosting a centralized logging service with Go,
+						and writing a database abstraction for our Django backend to safely make
+						database calls.
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-wrap">
+				<div class="text-box w-1/2">
+					<h3 class="text-xl">Software Engineering Intern at CriTech Research, Inc.</h3>
+					<p>
+						Over the summer, I'm working full time at CriTech Research, Inc. as an
+						intern. Currently, I'm refactoring a legacy C# .NET codebase to make
+						a more secure system. I also created a CI/CD pipeline with Jenkins to
+						continually test and deploy the codebase.
+					</p>
+					<p>TODO tools section</p>
+				</div>
+				<img src="/CriTech.jpg" class="mx-auto my-5" />
+			</div>
+		</div>
+		<div>
+			<h1 class="text-4xl my-7 text-center">Projects</h1>
+			<div class="text-box w-1/2">
+				<h3 class="text-xl">MonkeyType-Friends</h3>
+				<p>
+					I wanted to compete with my friends in MonkeyType, so I'm making
+					a website to do it. The source code can be seen
+					<a href="https://github.com/arael34/monkeytype-friends" target="_blank">
+						here.
+					</a>
+					This is still a WIP.
+				</p>
+			</div>	
+			<div class="text-box w-1/2">
+				<h3 class="text-xl">QLogger</h3>
+				<p>
+					I built a centralized logging service for Quarry.video. It's written in Go and uses
+					MongoDB as a database. It's currently hosted on railway. Check out the repo
+					<a href="https://github.com/arael34/qlogger" target="_blank">
+						here.
+					</a>
+				</p>
+			</div>
+			<div class="text-box w-1/2">
+				<h3 class="text-xl">Concept Map Browser Extension</h3>
+				<p>
+					This is a collaborative project for a school club. It's a browser extension that
+					allows you to highlight text and generate an interactive concept map from it.
+					Check out the repo
+					<a href="https://github.com/kuldeep7688/concept-map-browser-extension" target="_blank">
+						here.
+					</a>
+				</p>
+			</div>
+			<div class="text-box w-1/2">
+				<h3 class="text-xl">Various Rust simulations</h3>
+				<p>I wanted to learn rust, so I made a few simulations.</p>
+				<h4>A port of pipes.sh</h4>
+				<h4>Physarum simulation</h4>
+				<h4>Quadtree Nbody simulation</h4>
+			</div>
+		</div>
 	</main>
 </Layout>

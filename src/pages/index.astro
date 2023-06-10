@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import ContactCard from "../components/ContactCard.astro";
+import TechnologiesCard from "../components/TechnologiesCard.astro";
 import "../styles/index.css";
 ---
 
@@ -10,18 +11,19 @@ import "../styles/index.css";
 			<h1 class="pb-5 text-4xl">Welcome to <span class="text-gradient">my portfolio.</span></h1>
 		</div>
 		<ul role="list" class="link-card-grid">
-			<Card
+			<ContactCard
 				href="https://www.linkedin.com/in/jonasgroening/"
 				title="My LinkedIn"
 				body="Connect with me!"
 				target="_blank"
 			/>
-			<Card
+			<ContactCard
 				href="https://github.com/arael34/"
 				title="My GitHub"
 				body="Check out some source code."
 				target="_blank"
 			/>
+			<!--
 			<Card
 				href="/portfolio/blog"
 				title="Blog"
@@ -31,7 +33,7 @@ import "../styles/index.css";
 				href="/portfolio/about"
 				title="Contact me"
 				body="Want to get in touch?"
-			/>
+			/> -->
 		</ul>
 		<div>
 			<h1 class="text-4xl my-7 text-center">Experience</h1>
@@ -43,7 +45,16 @@ import "../styles/index.css";
 						You can visit the WIP at <a href="https://quarry.video" target="_blank">quarry.video.</a>
 						I've spent countless hours building features and designing the UI.
 					</p>
-					<p>TODO: tools section</p>
+					<br /> <!-- Remove this -->
+					<h3 class="text-xl">Technologies</h3>
+					<div class="flex">
+						<TechnologiesCard name="NextJS" src="/nextjs.png" />
+						<TechnologiesCard name="Golang" src="/golang.png" />
+						<TechnologiesCard name="React" src="/react.png" />
+						<TechnologiesCard name="Tailwind" src="/tailwind.png" />
+						<TechnologiesCard name="Django" src="/django.png" />
+						<TechnologiesCard name="MongoDB" src="/mongodb.png" />
+					</div>
 				</div>
 				<img src="/LandingPage.png" class="mx-auto my-5" />
 				<img src="/SnippetViewer.png" class="mx-auto my-5" />
@@ -54,7 +65,12 @@ import "../styles/index.css";
 						and writing a database abstraction for our Django backend to safely make
 						database calls.
 					</p>
-				</div>
+					<br /> <!-- Remove this -->
+					<h3 class="text-xl">Technologies, cont.</h3>
+					<div class="flex">
+						<TechnologiesCard name="Docker" src="/docker.png" />
+						<TechnologiesCard name="Redis" src="/redis.png" />
+					</div>
 			</div>
 			<div class="flex flex-wrap">
 				<div class="text-box w-1/2">
@@ -65,7 +81,14 @@ import "../styles/index.css";
 						a more secure system. I also created a CI/CD pipeline with Jenkins to
 						continually test and deploy the codebase.
 					</p>
-					<p>TODO tools section</p>
+					<br /> <!-- Remove this -->
+					<h3 class="text-xl">Technologies</h3>
+					<div class="flex">
+						<TechnologiesCard name="C#" src="/csharp.png" />
+						<TechnologiesCard name=".NET" src="/dotnet.png" />
+						<TechnologiesCard name="Jenkins" src="/jenkins.png" />
+						<TechnologiesCard name="React" src="/react.png" />
+					</div>
 				</div>
 				<img src="/CriTech.jpg" class="mx-auto my-5" />
 			</div>

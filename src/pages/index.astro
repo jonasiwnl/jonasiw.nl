@@ -26,16 +26,13 @@ import "../styles/index.css";
 			/>
 			<!--
 			<Card
-				href="/portfolio/blog"
+				href="/blog"
 				title="Blog"
 				body="I barely write anything."
 			/>
-			<Card
-				href="/portfolio/about"
-				title="Contact me"
-				body="Want to get in touch?"
-			/> -->
+			-->
 		</ul>
+		<ContactCard />
 		<div>
 			<h1 class="text-4xl my-7 text-center">Experience</h1>
 			<div class="flex flex-wrap">
@@ -48,7 +45,7 @@ import "../styles/index.css";
 					</p>
 					<br /> <!-- Remove this -->
 					<h3 class="text-xl">Technologies</h3>
-					<div class="flex">
+					<div class="flex justify-between">
 						<TechnologiesCard name="NextJS" src="/nextjs.svg" />
 						<TechnologiesCard name="Golang" src="/golang.png" />
 						<TechnologiesCard name="React" src="/react.png" />
@@ -57,8 +54,12 @@ import "../styles/index.css";
 						<TechnologiesCard name="MongoDB" src="/mongodb.png" />
 					</div>
 				</div>
-				<img src="/LandingPage.png" class="mx-auto my-5" />
-				<img src="/SnippetViewer.png" class="mx-auto my-5" />
+				<div class="w-1/2">
+					<img src="/LandingPage.png" class="mx-auto" />
+				</div>
+				<div class="w-1/2">
+					<img src="/SnippetViewer.png" class="mx-auto my-5" />
+				</div>
 				<div class="text-box w-1/2">
 					<p>
 						My contributions include but aren't limited to: building the frontend
@@ -68,7 +69,7 @@ import "../styles/index.css";
 					</p>
 					<br /> <!-- Remove this -->
 					<h3 class="text-xl">Technologies, cont.</h3>
-					<div class="flex">
+					<div class="flex justify-around">
 						<TechnologiesCard name="Docker" src="/docker.webp" />
 						<TechnologiesCard name="Redis" src="/redis.jpg" />
 					</div>
@@ -84,14 +85,16 @@ import "../styles/index.css";
 					</p>
 					<br /> <!-- Remove this -->
 					<h3 class="text-xl">Technologies</h3>
-					<div class="flex">
+					<div class="flex justify-between">
 						<TechnologiesCard name="C#" src="/csharp.png" />
 						<TechnologiesCard name=".NET" src="/dotnet.png" />
 						<TechnologiesCard name="Jenkins" src="/jenkins.png" />
 						<TechnologiesCard name="React" src="/react.png" />
 					</div>
 				</div>
-				<img src="/CriTech.jpg" class="mx-auto my-auto" />
+				<div class="w-1/2">
+					<img src="/CriTech.jpg" class="mx-auto my-auto" />
+				</div>
 			</div>
 		</div>
 		<div>

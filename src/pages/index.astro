@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ContactCard from "../components/ContactCard.astro";
+import ResourcesCard from "../components/ResourcesCard.astro";
 import TechnologiesCard from "../components/TechnologiesCard.astro";
+import ContactCard from "../components/ContactCard.astro";
 import "../styles/index.css";
 ---
 
@@ -11,13 +12,13 @@ import "../styles/index.css";
 			<h1 class="pb-5 text-4xl">Welcome to <span class="text-gradient">my portfolio.</span></h1>
 		</div>
 		<ul role="list" class="link-card-grid">
-			<ContactCard
+			<ResourcesCard
 				href="https://www.linkedin.com/in/jonasgroening/"
 				title="My LinkedIn"
 				body="Connect with me!"
 				target="_blank"
 			/>
-			<ContactCard
+			<ResourcesCard
 				href="https://github.com/arael34/"
 				title="My GitHub"
 				body="Check out some source code."
@@ -135,5 +136,6 @@ import "../styles/index.css";
 				<h4>Quadtree Nbody simulation</h4>
 			</div>
 		</div>
+		<ContactCard />
 	</main>
 </Layout>

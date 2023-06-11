@@ -2,10 +2,12 @@
 
 Bootstrapped with ```astro create```.
 
-## Ideas
+## TODO
 
-- Only 2 cards for github and linkedin
-- Technologies for each section
+- Formatting stuff
+- Contact card should be in the footer
+- Add education section
+- Add a blog
 
 ## 🚀 Project Structure
 

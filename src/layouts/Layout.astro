@@ -1,4 +1,6 @@
 ---
+import Themes from "astro-themes";
+
 export interface Props {
 	title: string;
 }
@@ -15,6 +17,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/ico" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<Themes />
 	</head>
 	<body>
 		<slot />
@@ -24,11 +27,36 @@ const { title } = Astro.props;
 	:root {
 		--accent: 125, 196, 228;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #f0c6c6 30%, white 60%);
+		--p-color: #cad3f5;
+		--pa-color: #a6da95;
+		--h1-color: #8aadf4;
+		--h2-color: #7dc4e4;
+		--h3-color: #b7bdf8;
+		--card-color: #5b6078;
+		--toggle-button-shift: 24px;
 	}
+
+	[data-theme="dark"] {
+		--accent: 54, 58, 79;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #8aadf4 30%, white 60%);
+		--p-color: #24273a;
+		--pa-color: #8087a2;
+		--h1-color: #1e2030;
+		--h2-color: #181926;
+		--h3-color: #363a4f;
+		--card-color: #939ab7;
+		--toggle-button-shift: 0px;
+	}
+
 	html {
 		font-family: system-ui, sans-serif;
 		background-color: #1e2030;
 	}
+
+	[data-theme="dark"] {
+		background-color: #cad3f5;
+	}
+
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;

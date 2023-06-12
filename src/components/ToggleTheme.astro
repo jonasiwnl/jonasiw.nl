@@ -1,0 +1,44 @@
+---
+import { Image } from "@astrojs/image/components";
+---
+
+<button toggle-mode>
+    <div class="flex toggle">
+        <Image
+            src="/sun.svg"
+            alt="Toggle Theme"
+            width={24}
+            height={24}
+        />
+        <Image
+            src="/moon.svg"
+            alt="Toggle Theme"
+            width={24}
+            height={24}
+        />
+    </div>
+</button>
+
+<script>
+    function toggleMode() {
+        switch (document.documentElement.attributes.getNamedItem("data-theme")?.value) {
+            case "dark":
+                document.dispatchEvent(new CustomEvent("set-theme", { detail: "light" }))
+                break;
+            case "light":
+                document.dispatchEvent(new CustomEvent("set-theme", { detail: "dark" }))
+        }
+    }
+
+    const buttons = document.querySelectorAll("[toggle-mode]");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => toggleMode());
+    });
+</script>
+
+<style>
+    .toggle {
+        transform: translateX(var(--toggle-button-shift));
+    }
+</style>

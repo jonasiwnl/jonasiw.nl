@@ -4,9 +4,9 @@ Bootstrapped with ```astro create```.
 
 ## TODO
 
-- Formatting stuff
-- Contact card should be in the footer
+- Add images and finish projects section
 - Add education section
+- Contact card should be in the footer
 - Add a blog
 
 ## 🚀 Project Structure

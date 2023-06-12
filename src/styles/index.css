@@ -55,6 +55,7 @@ img {
     padding: 0;
 }
 .text-box {
+    width: 50%;
     background-color: rgba(var(--accent), 12%);
     border-radius: 5px;
     border: 2px;

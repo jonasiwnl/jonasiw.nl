@@ -5,7 +5,7 @@ Bootstrapped with ```astro create```.
 ## TODO
 
 - Add images and finish projects section
-- Add education section
+- Dark mode/light mode
 - Contact card should be in the footer
 - Add a blog
 

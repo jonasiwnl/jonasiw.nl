@@ -1,4 +1,6 @@
 ---
+import { Image } from "@astrojs/image/components";
+
 export interface Props {
     name: string;
     src: string;
@@ -8,6 +10,12 @@ const { name, src } = Astro.props;
 ---
 
 <div class="flex flex-col items-center justify-center mt-2">
-    <img class="w-12 h-12 rounded object-scale-down" src={src} alt={name}>
+    <Image
+        class="rounded object-scale-down"
+        src={src}
+        alt={name}
+        width={48}
+        height={48}
+    />
     <p class="mt-1">{ name }</p>
 </div>

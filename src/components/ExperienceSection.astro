@@ -1,4 +1,5 @@
 ---
+import { Image } from "@astrojs/image/components";
 import TechnologiesCard from "./TechnologiesCard.astro";
 ---
 
@@ -24,10 +25,22 @@ import TechnologiesCard from "./TechnologiesCard.astro";
             </div>
         </div>
         <div class="w-1/2">
-            <img src="/LandingPage.png" class="mx-auto w-11/12" />
+            <Image
+                src="/LandingPage.png"
+                class="mx-auto max-w-[91%]"
+                alt="Quarry.video Landing Page"
+                width={450}
+                height={210}
+            />
         </div>
         <div class="w-1/2">
-            <img src="/SnippetViewer.png" class="mx-auto w-11/12" />
+            <Image
+                src="/SnippetViewer.png"
+                class="mx-auto max-w-[91%]"
+                alt="Quarry.video Snippet Viewer"
+                width={450}
+                height={210}
+            />
         </div>
         <div class="text-box">
             <p>
@@ -65,7 +78,13 @@ import TechnologiesCard from "./TechnologiesCard.astro";
             </div>
         </div>
         <div class="w-1/2">
-            <img src="/CriTech.jpg" class="mx-auto" />
+            <Image
+                src="/CriTech.jpg"
+                class="mx-auto"
+                alt="CriTech Logo"
+                width={225}
+                height={225}
+            />
         </div>
     </div>
 </div>

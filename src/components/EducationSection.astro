@@ -1,10 +1,12 @@
 ---
+import { Image } from "@astrojs/image/components";
 import TechnologiesCard from "./TechnologiesCard.astro";
 ---
 
+<h1 class="text-4xl my-7 text-center">Education</h1>
 <div class="flex items-center">
     <div class="text-box">
-        <h3 class="text-xl">Education</h3>
+        <h3 class="text-xl">University of Michigan</h3>
         <p>
             I'm currently attending the College of Engineering at the
             University of Michigan, Ann Arbor. I'm pursuing a B.S.E. in
@@ -16,5 +18,11 @@ import TechnologiesCard from "./TechnologiesCard.astro";
             </div>
     </div>
     <div></div>
-    <img src="/umich.png" alt="UMich" class="mx-auto" />
+    <Image
+        src="/umich.png"
+        alt="University of Michigan"
+        class="mx-auto"
+        width={200}
+        height={200}
+    />
 </div>

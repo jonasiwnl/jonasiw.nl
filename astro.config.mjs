@@ -5,7 +5,7 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://arael34.github.io",
+  site: "https://jonasiwnl.github.io",
   integrations: [
     tailwind(),
     image({

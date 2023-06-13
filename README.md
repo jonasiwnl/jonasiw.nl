@@ -4,13 +4,11 @@ Bootstrapped with ```astro create```.
 
 ## TODO
 
-#### necessary for release
-- Add images and finish projects section
-#### nice to have
+- Add hover effects to text-box, contact card
 - Make contact card look nice
 - Touch up dark mode/light mode colors, esp in resources card
+- Make projects section cooler
 - Lower resolution images, or .webp format
-- Contact card should be in the footer
 - Add a blog
 
 ## 🚀 Project Structure

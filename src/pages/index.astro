@@ -11,9 +11,12 @@ import "../styles/index.css";
 
 <Layout title="Jonas | Portfolio">
 	<main>
-		<div class="w-full text-right">
+	<div class="header text-right">
+			<a class="align-top mr-1 hover:underline" href="#Experience">Experience</a>
+			<a class="align-top mr-1 hover:underline" href="#Projects">Projects</a>
+			<a class="align-top mr-1 hover:underline" href="#Education">Education</a>
 			<ToggleTheme />
-		</div>
+	</div>
 		<div class="w-full text-center mb-1">
 			<h1 class="pb-3 text-4xl text-gradient">Jonas Groening</h1>
 			<h2 class="pb-5 text-3xl">Welcome to <span class="text-gradient">my portfolio.</span></h1>
@@ -22,27 +25,24 @@ import "../styles/index.css";
 			<ResourcesCard
 				href="https://www.linkedin.com/in/jonasgroening/"
 				title="My LinkedIn"
-				body="Connect with me!"
-				target="_blank"
 			/>
 			<ResourcesCard
 				href="https://github.com/jonasiwnl/"
 				title="My GitHub"
-				body="Check out some source code."
-				target="_blank"
 			/>
-			<!--
-			<Card
-				href="/blog"
-				title="Blog"
-				body="I barely write anything."
+			<ResourcesCard
+				href="/Resume.pdf"
+				title="Current Resume"
 			/>
-			-->
 		</ul>
 		<ContactCard />
 		<ExperienceSection />
 		<ProjectsSection />
 		<EducationSection />
 		<ContactCard />
+
+		<div class="text-center my-10 header">
+			<a class="hover:underline" href="#">Back to top</a>
+		</div>
 	</main>
 </Layout>

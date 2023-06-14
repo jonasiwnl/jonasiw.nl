@@ -3,7 +3,7 @@ import { Image } from "@astrojs/image/components";
 ---
 
 <button toggle-mode>
-    <div class="flex toggle">
+    <div class="flex toggle flex-col">
         <Image
             src="/sun.svg"
             alt="Toggle Theme"
@@ -39,6 +39,6 @@ import { Image } from "@astrojs/image/components";
 
 <style>
     .toggle {
-        transform: translateX(var(--toggle-button-shift));
+        transform: translateY(var(--toggle-button-shift));
     }
 </style>

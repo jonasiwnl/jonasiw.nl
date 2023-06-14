@@ -6,6 +6,7 @@ Bootstrapped with ```astro create```.
 
 - Add hover effects to text-box, contact card
 - Make contact card look nice
+- Resume
 - Touch up dark mode/light mode colors, esp in resources card
 - Make projects section cooler
 - Lower resolution images, or .webp format

@@ -31,7 +31,7 @@ const { title } = Astro.props;
 		--pa-color: #a6da95;
 		--h2-color: #7dc4e4;
 		--card-color: #5b6078;
-		--toggle-button-shift: 24px;
+		--toggle-button-shift: 0px;
 	}
 
 	[data-theme="dark"] {
@@ -41,12 +41,13 @@ const { title } = Astro.props;
 		--pa-color: #8087a2;
 		--h2-color: #181926;
 		--card-color: #939ab7;
-		--toggle-button-shift: 0px;
+		--toggle-button-shift: -24px;
 	}
 
 	html {
 		font-family: system-ui, sans-serif;
 		background-color: #1e2030;
+		scroll-behavior: smooth;
 	}
 
 	[data-theme="dark"] {

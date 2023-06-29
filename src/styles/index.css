@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 main {
+    width: 80%;
+    margin: 0 auto;
     padding-top: 1rem;
-    padding-left: 15rem;
-    padding-right: 15rem
 }
 p {
     color: var(--p-color);
@@ -46,13 +46,15 @@ img {
 }
 .text-box {
     width: 50%;
+    min-width: 20rem;
     background-color: rgba(var(--accent), 12%);
     border-radius: 5px;
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 1rem auto;
 }
 .projects-text-box {
     width: 90%;
+    min-width: 20rem;
     background-color: rgba(var(--accent), 12%);
     border-radius: 5px;
     padding: 1rem;

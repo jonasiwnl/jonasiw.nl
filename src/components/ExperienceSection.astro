@@ -15,7 +15,7 @@ import TechnologiesCard from "./TechnologiesCard.astro";
             </p>
             <br /> <!-- Remove this -->
             <h2 class="text-xl">Technologies</h2>
-            <div class="flex justify-between">
+            <div class="flex justify-between flex-wrap">
                 <TechnologiesCard name="TypeScript" src="/typescript.png" />
                 <TechnologiesCard name="NextJS" src="/nextjs.svg" />
                 <TechnologiesCard name="Golang" src="/golang.png" />
@@ -24,24 +24,20 @@ import TechnologiesCard from "./TechnologiesCard.astro";
                 <TechnologiesCard name="MongoDB" src="/mongodb.png" />
             </div>
         </div>
-        <div class="w-1/2">
-            <Image
-                src="/LandingPage.png"
-                class="mx-auto max-w-[91%]"
-                alt="Quarry.video Landing Page"
-                width={450}
-                height={210}
-            />
-        </div>
-        <div class="w-1/2">
-            <Image
-                src="/SnippetViewer.png"
-                class="mx-auto max-w-[91%]"
-                alt="Quarry.video Snippet Viewer"
-                width={450}
-                height={210}
-            />
-        </div>
+        <Image
+            src="/LandingPage.png"
+            class="mx-auto"
+            alt="Quarry.video Landing Page"
+            width={450}
+            height={210}
+        />
+        <Image
+            src="/SnippetViewer.png"
+            class="mx-auto"
+            alt="Quarry.video Snippet Viewer"
+            width={450}
+            height={210}
+        />
         <div class="text-box">
             <p>
                 My contributions include but aren't limited to: building the frontend
@@ -51,7 +47,7 @@ import TechnologiesCard from "./TechnologiesCard.astro";
             </p>
             <br /> <!-- Remove this -->
             <h2 class="text-xl">Technologies, cont.</h2>
-            <div class="flex justify-around">
+            <div class="flex justify-around flex-wrap">
                 <TechnologiesCard name="Docker" src="/docker.webp" />
                 <TechnologiesCard name="Redis" src="/redis.jpg" />
                 <TechnologiesCard name="Django" src="/django.png" />
@@ -69,7 +65,7 @@ import TechnologiesCard from "./TechnologiesCard.astro";
             </p>
             <br /> <!-- Remove this -->
             <h2 class="text-xl">Technologies</h2>
-            <div class="flex justify-between">
+            <div class="flex justify-between flex-wrap">
                 <TechnologiesCard name="C#" src="/csharp.png" />
                 <TechnologiesCard name=".NET" src="/dotnet.png" />
                 <TechnologiesCard name="Jenkins" src="/jenkins.png" />
@@ -77,15 +73,13 @@ import TechnologiesCard from "./TechnologiesCard.astro";
                 <TechnologiesCard name="React" src="/react.png" />
             </div>
         </div>
-        <div class="w-1/2">
-            <Image
-                src="/CriTech.jpg"
-                class="mx-auto"
-                alt="CriTech Logo"
-                width={225}
-                height={225}
-            />
-        </div>
+        <Image
+            src="/CriTech.jpg"
+            class="mx-auto"
+            alt="CriTech Logo"
+            width={225}
+            height={225}
+        />
     </div>
 </div>
 

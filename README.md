@@ -4,12 +4,12 @@ Bootstrapped with ```astro create```.
 
 ## TODO
 
+- Add a blog
+- Lower resolution images, or .webp format
+
 - Add hover effects to text-box, contact card
 - Make contact card look nice
 - Touch up dark mode/light mode colors, esp in resources card
-- Make projects section cooler
-- Lower resolution images, or .webp format
-- Add a blog
 
 ## 🚀 Project Structure
 

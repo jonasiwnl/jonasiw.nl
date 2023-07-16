@@ -1,21 +1,13 @@
 ---
-import { Image } from "@astrojs/image/components";
+// import { Image } from "@astrojs/image/components";
+import Moon from "../../public/moon.astro";
+import Sun from "../../public/sun.astro";
 ---
 
 <button toggle-mode>
     <div class="flex toggle flex-col">
-        <Image
-            src="/sun.svg"
-            alt="Toggle Theme"
-            width={24}
-            height={24}
-        />
-        <Image
-            src="/moon.svg"
-            alt="Toggle Theme"
-            width={24}
-            height={24}
-        />
+        <Sun />
+        <Moon />
     </div>
 </button>
 

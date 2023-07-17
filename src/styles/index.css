@@ -4,8 +4,8 @@
 
 @font-face {
     font-family: "JetBrains Mono";
-    src: url("font/JetBrainsMonoNL-Regular.ttf") format("truetype"),
-        url("font/JetBrainsMono-Regular.woff2") format("woff2");
+    src: url("/font/JetBrainsMonoNL-Regular.ttf") format("truetype"),
+        url("/font/JetBrainsMono-Regular.woff2") format("woff2");
 }
 
 * {

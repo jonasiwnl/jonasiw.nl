@@ -31,7 +31,6 @@ const { href, title } = Astro.props;
 
 	.link-card > a {
 		width: 100%;
-		text-decoration: none;
 		line-height: 1.4;
 		padding: 1rem 1.3rem;
 		border-radius: 0.35rem;
@@ -53,5 +52,8 @@ const { href, title } = Astro.props;
 	}
 	.link-card:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent));
+	}
+	a:hover {
+		text-decoration: none !important;
 	}
 </style>

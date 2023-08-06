@@ -1,0 +1,39 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import "../../styles/index.css";
+---
+
+<BlogLayout title="Solving a mysterious 504">
+    <p class="text-xl my-6 mx-1"><a href="/blog">&#x2190; Back</a></p>
+    <h1 class="text-3xl text-gradient pb-5">Solving a mysterious 504</h1>
+    <p class="mb-12">
+        One day, my friend was trying to use our site <a href="https://www.quarry.video">quarry.video</a>.
+        Just trying to navigate the side, he immediately realized something was wrong. The site was taking
+        forever to load, and in some cases, even return a 504 error. We immediately hopped on call to try
+        to fix it. First, we checked the logs. There were absolutely no error messages (except the very helpful 504).
+        <br /><br />
+        So, we started the hunt. We checked Cloudflare, Vercel, and MongoDB. All system statuses were good.
+        Navigating around the site, my next observation was that static pages loaded fine. Since
+        the site was build with NextJS, we knew it was more than likely a database issue.
+        Anything involving fetching session/user data was taking forever, or even 504ing.
+        <br /><br />
+        Next, I logged out and tried to navigate to pages that involved authentication. Interestingly enough,
+        the pages loaded fine. This was a huge clue, since fetching session data (when it didn't exist) was still
+        fast. It wasn't a general database issue, the slowdown happened when user session data had to be fetched.
+        Neither of us knew why this could be happening, though.
+        <br /><br />
+        We did some further investigating, checking each request and response. It turned out that Prisma, our ORM,
+        fetched ALL user data when fetching session data. This was a huge problem, since we had a lot of user data.
+        Every time a user session needed to be validated, Prisma would pull in way more data than it needed to.
+        At last, we had found the root of the 504, but had not a clue as to how to fix it.
+        <br /><br />
+        This is an issue with our design choices. Prisma is mainly meant to be used with relational databases, but (much
+        to my dismay) the team decided to use MongoDB. This meant that Prisma had to do a lot of extra work to fetch
+        data. However, despite this error, they were adamant about continuing to use MongoDB. Therefore, some work was
+        needed. We had to write a custom Prisma MongoDB adapter that would only fetch as much data as needed.
+        <br /><br />
+        This took a lot of time and caffeine. However, it was worth it. After we finished, the site worked as intended.
+        We had fixed the 504. Honestly, the correct choice here is to not use Prisma with MongoDB. Don't make the same
+        mistake as I did.
+    </p>
+</BlogLayout>

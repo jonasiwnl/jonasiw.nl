@@ -1,0 +1,36 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import "../../styles/index.css";
+
+type Blog = {
+    title: string;
+    date: string;
+    link: string;
+};
+
+const blogs: Blog[] = [
+    {
+        title: "A summer at CriTech",
+        date: "08-06-2023",
+        link: "/blog/2",
+    },
+    {
+        title: "Solving a mysterious 504",
+        date: "08-04-2023",
+        link: "/blog/1",
+    },
+]
+---
+
+<BlogLayout title="Jonas | Blog">
+    <h1 class="text-3xl text-gradient text-center pb-2">Blog &#x2605;</h1>
+    <p class="text-center mb-8">Don't expect much here.</p>
+    { blogs.map((blog) => {
+        return (
+            <div class="flex items-center my-2">
+                <p>{blog.date} --&#x2192;</p>
+                <p class="text-lg ml-5">{blog.title} | <a href={blog.link}>Read</a></p>
+            </div>
+        )
+    }) }
+</BlogLayout>

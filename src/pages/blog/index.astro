@@ -1,5 +1,6 @@
 ---
-import BlogLayout from "../../layouts/BlogLayout.astro";
+import Layout from "../../layouts/Layout.astro";
+import ToggleTheme from "../../components/ToggleTheme.astro";
 import "../../styles/index.css";
 
 type Blog = {
@@ -22,7 +23,12 @@ const blogs: Blog[] = [
 ]
 ---
 
-<BlogLayout title="Jonas | Blog">
+<Layout title="Jonas | Blog">
+    <main>
+    <div class="header text-right mb-4">
+        <a class="align-top mr-1" href="/">Home</a>
+        <ToggleTheme />
+    </div>
     <h1 class="text-3xl text-gradient text-center pb-2">Blog &#x2605;</h1>
     <p class="text-center mb-8">Don't expect much here.</p>
     { blogs.map((blog) => {
@@ -33,4 +39,5 @@ const blogs: Blog[] = [
             </div>
         )
     }) }
-</BlogLayout>
+    </main>
+</Layout>

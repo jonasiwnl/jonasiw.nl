@@ -13,9 +13,9 @@ import "../../styles/index.css";
         Copy and pasting the <a href="https://0ijq1i6sp1.execute-api.us-east-1.amazonaws.com/dev" target="_blank">link</a>
         into a browser yields a JSON response of gibberish, ending with a
         double equal sign. This is a pretty good indication that the string is Base64 encoded, so I put it
-        into a decoder. and behold, a introductory message was shown. The team introduced themselves
-        and gave a brief overview of the challenge. It was a CTF. The goal was to find 2 or more flags,
-        which the team described as seven letter dictionary words.
+        into a decoder. And behold, a message is shown. The team introduces themselves
+        and gives a brief overview of the challenge. It's a CTF. The goal is to find 2 or more flags,
+        which the team describes as seven letter dictionary words.
         <br /><br />
         My first observation is that the link ends with a query, like "?q=select whatever from whatever".
         SQL injection can likely be used. Poking around at different endpoints, I can gather that it's
@@ -39,12 +39,12 @@ import "../../styles/index.css";
         So, I suppose I can try more queries. "Meow" yields TooFewCharacters. I try more, and here are some clues.
         <br /><br />
         It can't start with H.
-        It can't contain an L
+        It can't contain an L.
         Only letters are allowed.
         It has 7 characters.
         DoesNotSumToFortyTwoCaseInsensitive.
         <br /><br />
-        It is 7 characters. I'm sure this is a flag. I keep going. The last error, I assume, means
+        I'm sure this is a flag. The last error, I assume, means
         the positions in the alphabet have to sum to 42. I'm going to come back to this.
         <br /><br />
         My next attempt: /stream. This yields a single character, o. Hitting it again yields a different
@@ -62,7 +62,7 @@ import "../../styles/index.css";
         told me to get back to work, so I'll go for the next 2 after I get home.
         <br /><br />
         /browser is next. I suppose I have to spoof my user agent. Easy enough, I'll just use curl.
-        This was surprisingly easy, as the server gives you what it is supposed to be. 3 flags down.
+        The server even gives you what the user agent is supposed to be. 3 flags down.
         <br /><br />
         /hash is difficult. Brute forcing it seems to be in bad taste, and honestly caveman-like.
         Feel urge speak short sentences. The string is randomly salted, which makes this especially

@@ -61,15 +61,12 @@ img {
 .text-box {
     width: 50%;
     min-width: 20rem;
-    background-color: rgba(var(--accent), 12%);
-    border-radius: 5px;
     padding: 1rem;
     margin: 1rem auto;
 }
 .projects-text-box {
     width: 90%;
     min-width: 20rem;
-    background-color: rgba(var(--accent), 12%);
     border-radius: 5px;
     padding: 1rem;
     margin: 1rem auto;

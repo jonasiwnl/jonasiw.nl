@@ -4,12 +4,8 @@ Bootstrapped with ```astro create```.
 
 ## TODO
 
-- Add a blog
+- Refactor resource card section (linkedin, github, resume)
 - Lower resolution images, or .webp format
-
-- Add hover effects to text-box, contact card
-- Make contact card look nice
-- Touch up dark mode/light mode colors, esp in resources card
 
 ## 🚀 Project Structure
 

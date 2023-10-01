@@ -16,7 +16,7 @@ const { title, date } = Astro.props;
             <a class="align-top mr-1" href="/">Home</a>
             <ToggleTheme />
         </div>
-	<div class="blog">
+	<div class="m-auto">
         <p class="text-xl my-6 mx-1"><a href="/blog">&#x2190; Back</a></p>
         <h1 class="text-3xl text-gradient mb-2">{title}</h1>
         <h2>{date}</h2>
@@ -24,10 +24,3 @@ const { title, date } = Astro.props;
 	</div>
     </main>
 </Layout>
-
-<style>
-    .blog {
-        max-width: 800px;
-	margin: auto;
-    }
-</style>

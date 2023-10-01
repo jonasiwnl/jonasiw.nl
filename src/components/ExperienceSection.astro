@@ -1,63 +1,14 @@
 ---
-import { Image } from "@astrojs/image/components";
-import TechnologiesCard from "./TechnologiesCard.astro";
+// import TechnologiesCard from "./TechnologiesCard.astro";
 ---
 
 <div id="Experience">
-    <h1 class="text-4xl my-7 text-center text-gradient">Experience</h1>
-    <div class="flex flex-wrap items-center">
-        <div class="text-box">
-            <h2 class="text-xl">Building @ Quarry.video</h2>
-            <p>
-                I'm currently building a tool to help video editors work efficiently. 
-                You can visit the WIP at <a href="https://www.quarry.video" target="_blank">quarry.video.</a>
-                I've spent countless hours building features and designing the UI.
-            </p>
-            <br /> <!-- Remove this -->
-            <h2 class="text-xl">Technologies</h2>
-            <div class="flex justify-between flex-wrap">
-                <TechnologiesCard name="TypeScript" src="/typescript.png" />
-                <TechnologiesCard name="NextJS" src="/nextjs.png" />
-                <TechnologiesCard name="Golang" src="/golang.png" />
-                <TechnologiesCard name="React" src="/react.png" />
-                <TechnologiesCard name="Python" src="/python.png" />
-                <TechnologiesCard name="MongoDB" src="/mongodb.png" />
-            </div>
-        </div>
-        <Image
-            src="/LandingPage.png"
-            class="mx-auto"
-            alt="Quarry.video Landing Page"
-            width={450}
-            height={210}
-        />
-        <Image
-            src="/SnippetViewer.png"
-            class="mx-auto"
-            alt="Quarry.video Snippet Viewer"
-            width={450}
-            height={210}
-        />
-        <div class="text-box">
-            <p>
-                My contributions include but aren't limited to: building the entire fullstack
-                app with NextJS, creating and hosting a centralized logging service with Go,
-                and writing a database abstraction for a Django API to safely make
-                database calls, and developing a deployment CI/CD pipeline with Docker,
-                Terraform, and Jenkins.
-            </p>
-            <br /> <!-- Remove this -->
-            <h2 class="text-xl">Technologies, cont.</h2>
-            <div class="flex justify-around flex-wrap">
-                <TechnologiesCard name="Docker" src="/docker.webp" />
-                <TechnologiesCard name="Redis" src="/redis.jpg" />
-                <TechnologiesCard name="Django" src="/django.png" />
-                <TechnologiesCard name="Tailwind" src="/tailwind.png" />
-            </div>
-    </div>
-    <div class="flex flex-wrap items-center">
+    <h1 class="text-3xl mt-10 text-gradient">Experience</h1>
+    <div class="flex">
         <div class="text-box">
             <h2 class="text-xl">Software Engineering Intern @ CriTech Research, Inc.</h2>
+            <p>May 2023 -- August 2023</p>
+            <!-- 
             <p>
                 Over the summer, I'm working full time at CriTech Research, Inc. as an
                 intern. Currently, I'm using Python and OpenCV to create a tool to
@@ -65,23 +16,49 @@ import TechnologiesCard from "./TechnologiesCard.astro";
                 refactored a legacy C# .NET codebase to make a more robust and secure API.
                 I also created a CI/CD pipeline with Jenkins to continually test and deploy that backend.
             </p>
-            <br /> <!-- Remove this -->
-            <h2 class="text-xl">Technologies</h2>
-            <div class="flex justify-between flex-wrap">
-                <TechnologiesCard name="C#" src="/csharp.png" />
-                <TechnologiesCard name=".NET" src="/dotnet.png" />
-                <TechnologiesCard name="Jenkins" src="/jenkins.png" />
-                <TechnologiesCard name="Typescript" src="/typescript.png" />
-                <TechnologiesCard name="React" src="/react.png" />
-                <TechnologiesCard name="Python" src="/python.png" />
-            </div>
+            <br /> --> <!-- Remove this -->
         </div>
-        <Image
-            src="/CriTech.jpg"
-            class="mx-auto"
-            alt="CriTech Logo"
-            width={225}
-            height={225}
-        />
+        <div class="flex flex-col stack">
+            <h2 class="text-xl">Stack</h2>
+            <ul>
+                <li><p>Typescript</p></li>
+                <li><p>Python</p></li>
+                <li><p>C#</p></li>
+                <li><p>.NET</p></li>
+                <li><p>Jenkins</p></li>
+                <li><p>MySQL</p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="text-box">
+            <h2 class="text-xl">Building @ Quarry.video</h2>
+            <p>Jan 2023 -- May 2023</p>
+            <!--
+            <p>
+                I interned at a startup to build a tool to help video editors work efficiently. 
+                You can visit the WIP at <a href="https://www.quarry.video" target="_blank">quarry.video.</a>
+                I've built out many backend features, such as a typesafe database wrapper
+                for MongoDB, or a message queue system with RabbitMQ.
+            </p>
+            <br /> --> <!-- Remove this -->
+            <!--
+            <p>
+                I also experimented with some infra tools like Terraform and Docker to automate various
+                tasks (testing, deploying, etc.)
+            </p> -->
+        </div>
+        <div class="flex flex-col stack">
+            <h2 class="text-xl">Stack</h2>
+            <ul>
+                <li><p>Typescript</p></li>
+                <li><p>NextJS</p></li>
+                <li><p>Python</p></li>
+                <li><p>Django</p></li>
+                <li><p>MongoDB</p></li>
+                <li><p>Docker</p></li>
+                <li><p>Terraform</p></li>
+            </ul>
+        </div>
     </div>
 </div>

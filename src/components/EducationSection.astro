@@ -1,39 +1,22 @@
 ---
-import { Image } from "@astrojs/image/components";
-import TechnologiesCard from "./TechnologiesCard.astro";
+// import TechnologiesCard from "./TechnologiesCard.astro";
 ---
 
-<h1 id="Education" class="text-4xl my-7 text-center text-gradient">Education</h1>
-<div class="flex items-center flex-wrap">
-    <div class="text-box">
-        <h2 class="text-xl">University of Michigan</h2>
-        <p>
-            I'm currently attending the College of Engineering at the
-            University of Michigan, Ann Arbor. I'm pursuing a B.S.E. in
-            Computer Science. On top of software engineering, I enjoy learning
-            about CS theory and concepts.
-        </p>
-        <br />
-        <h2 class="text-xl">Technologies</h2>
-            <div class="flex justify-between">
-                <TechnologiesCard name="C++" src="/cpp.png" />
-            </div>
-    </div>
-    <Image
-        src="/umich.png"
-        alt="University of Michigan"
-        class="mx-auto"
-        width={200}
-        height={200}
-    />
-    <div class="text-box">
-        <h2 class="text-xl">Relevant Coursework</h2>
-        <p>
-            EECS 183: Elementary Programming Concepts<br />
-            EECS 203: Discrete Mathematics<br />
-            EECS 280: Programming and Introductory Data Structures<br />
-            EECS 281: Data Structures and Algorithms<br />
-            MATH 217: Linear Algebra
-        </p>
-    </div>
-</div>
+<h1 id="Education" class="text-3xl mt-7 text-gradient">Education</h1>
+<h2 class="text-xl pt-[1rem]">University of Michigan</h2>
+<p>B.S.E, Computer Science</p><br/>
+<!--
+<p>
+    I'm currently attending the College of Engineering at the
+    University of Michigan, Ann Arbor. I'm pursuing a B.S.E. in
+    Computer Science. On top of software engineering, I enjoy learning
+    about CS theory and concepts.
+</p>
+<br />
+<h2 class="text-xl">Technologies</h2>
+    <div class="flex justify-between">
+        <TechnologiesCard name="C++" src="/cpp.png" />
+</div> -->
+<p>Relevant Coursework: Data Structures and Algorithms, Discrete Math, Prog. and Introductory Data Structures, Linear Algebra</p>
+<br/>
+<p>Activities: V1 @ Michigan, UM Autonomous Robotic Vehicles</p>

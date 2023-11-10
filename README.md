@@ -2,11 +2,6 @@
 
 Bootstrapped with ```astro create```.
 
-## TODO
-
-- Refactor resource card section (linkedin, github, resume)
-- Lower resolution images, or .webp format
-
 ## 🚀 Project Structure
 
 ```

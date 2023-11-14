@@ -10,18 +10,23 @@ import "../styles/index.css";
 
 <Layout title="Jonas | Portfolio">
 	<main>
-	<div class="header text-right mb-4 whitespace-nowrap">
-		<a class="align-top mr-1" href="#Experience">Experience</a>
-		<a class="align-top mr-1" href="#Education">Education</a>
-		<a class="align-top mr-1" href="#Projects">Projects</a>
-		<!-- <a class="align-top mr-1" href="/blog">Blog</a> -->
+
+	<div class="flex justify-end">
+		<div class="header text-right mb-4">
+			<a class="align-top mr-1" href="#Experience">experience/</a>
+			<a class="align-top mr-1" href="#Education">education/</a>
+			<a class="align-top mr-1" href="#Projects">projects/</a>
+			<a class="align-top mr-1" href="/blog">blog/</a>
+			<a class="align-top mr-1" href="/images">images/</a>
+		</div>
 		<ToggleTheme />
 	</div>
-		<div class="w-full mb-7">
-			<h1 class="pb-3 text-4xl">Hi, I'm <span class="text-gradient">Jonas &#x2602;</span></h1>
-      <p>
-				I'm studying computer science at the University of Michigan and have experience in backend development. I'm interested in infrastructure, distributed systems, and system architecture.
-			</p>
+
+	<div class="w-full mb-7">
+		<h1 class="pb-3 text-4xl">Hi, I'm <span class="text-gradient">Jonas &#x2602;</span></h1>
+		<p>
+			I'm studying computer science at the University of Michigan and have experience in backend development. I'm interested in infrastructure, distributed systems, and system architecture.
+		</p>
 		</div>
 		<ContactCard />
 		<ExperienceSection />

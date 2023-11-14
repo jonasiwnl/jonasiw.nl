@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import ToggleTheme from "../components/ToggleTheme.astro";
+
+import catRyanGosling from "../images/CatRyanGosling.jpg";
+import sickSpaceWalk from "../images/SickGuyWalkingInSpace.jpg";
+import aFoolMoonNight from "../images/afoolmoonnight.jpg";
+import wallpaper from "../images/nnoir-wallpaper.jpg";
+import me from "../images/me.jpg";
+import quarrel from "../images/quarrel.jpg";
+
+import Layout from "../layouts/Layout.astro";
+import "../styles/index.css";
+---
+
+<Layout title="Jonas | Images">
+    <main>
+    <div class="header text-right mb-4">
+        <a class="align-top mr-1" href="/">home/</a>
+        <ToggleTheme />
+    </div>
+    <div class="w-full mb-3">
+        <h1 class="pb-3 text-4xl"><span class="text-gradient">Images &#x2605</span></h1>
+    </div>
+
+    <Image src={catRyanGosling} alt="Cat Ryan Gosling" width="200" height="200" />
+    <p>Here is a picture of a cat instead of Ryan Gosling in that one scene.</p>
+    <Image src={me} alt="Me" width="200" height="200" />
+    <p>This is a picture of me at Yosemite.</p>
+    <Image src={sickSpaceWalk} alt="Space Walk" width="200" height="200" />
+    <p>Here is a picture of a guy walking in space.</p>
+    <Image src={aFoolMoonNight} alt="A Fool Moon Night" width="400" height="200" />
+    <p>This is a good OSU map.</p>
+    <Image src={wallpaper} alt="Wallpaper" width="400" height="200" />
+    <p>Here is my laptop wallpaper. I haven't changed it in a while.</p>
+    <Image src={quarrel} alt="Quarrel and Knight" width="400" height="200" />
+    <p>Here is my favorite moment from my favorite game.</p>
+
+    <div class="text-right my-10 header">
+        <a href="#">Back to top &#x2191;</a>
+    </div>
+    </main>
+</Layout>
+
+<style>
+    p {
+        margin-bottom: 2rem !important;
+    }
+</style>

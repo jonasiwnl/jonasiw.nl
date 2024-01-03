@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import ToggleTheme from "../components/ToggleTheme.astro";
 
 import catRyanGosling from "../images/CatRyanGosling.jpg";
 import sickSpaceWalk from "../images/SickGuyWalkingInSpace.jpg";
@@ -14,13 +13,8 @@ import "../styles/index.css";
 ---
 
 <Layout title="Jonas | Images">
-    <main>
-    <div class="header text-right mb-4">
-        <a class="align-top mr-1" href="/">home/</a>
-        <ToggleTheme />
-    </div>
     <div class="w-full mb-3">
-        <h1 class="pb-3 text-4xl"><span class="text-gradient">Images &#x2605</span></h1>
+        <h1 class="pb-3 text-2xl underline">images</h1>
     </div>
 
     <Image src={catRyanGosling} alt="Cat Ryan Gosling" width="200" height="200" />
@@ -39,7 +33,6 @@ import "../styles/index.css";
     <div class="text-right my-10 header">
         <a href="#">Back to top &#x2191;</a>
     </div>
-    </main>
 </Layout>
 
 <style>

@@ -1,31 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import ContactCard from "../components/ContactCard.astro";
-import ExperienceSection from "../components/ExperienceSection.astro";
-import ProjectsSection from "../components/ProjectsSection.astro";
-import EducationSection from "../components/EducationSection.astro";
 import "../styles/index.css";
 ---
 
 <Layout title="Jonas | Portfolio">
-	<main>
-
-	<Header />
-
 	<div class="w-full mb-7">
-		<h1 class="pb-3 text-5xl">Hi</h1>
+		<h1 class="pb-3 text-2xl underline">about</h1>
 		<p>
 			I'm studying computer science at the University of Michigan and have experience in backend development. I'm interested in infrastructure, distributed systems, and system architecture.
 		</p>
-		</div>
-		<ContactCard />
-		<ExperienceSection />
-		<EducationSection />
-		<ProjectsSection />
-		<ContactCard />
-		<div class="text-right my-10 header">
-			<a href="#">Back to top &#x2191;</a>
-		</div>
-	</main>
+		<br />
+		<p>
+			Outside of school I like learning about math, physics, investing, and playing chess. I also love hiking.
+		</p>
+	</div>
+	<ContactCard />
 </Layout>

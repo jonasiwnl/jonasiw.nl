@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ToggleTheme from "../components/ToggleTheme.astro";
+import Header from "../components/Header.astro";
 import ContactCard from "../components/ContactCard.astro";
 import ExperienceSection from "../components/ExperienceSection.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
@@ -11,19 +11,10 @@ import "../styles/index.css";
 <Layout title="Jonas | Portfolio">
 	<main>
 
-	<div class="flex justify-end">
-		<div class="header text-right mb-4">
-			<a class="align-top mr-1" href="#Experience">experience/</a>
-			<a class="align-top mr-1" href="#Education">education/</a>
-			<a class="align-top mr-1" href="#Projects">projects/</a>
-			<!-- <a class="align-top mr-1" href="/blog">blog/</a> -->
-			<a class="align-top mr-1" href="/images">images/</a>
-		</div>
-		<ToggleTheme />
-	</div>
+	<Header />
 
 	<div class="w-full mb-7">
-		<h1 class="pb-3 text-5xl">Hi, I'm <span class="text-gradient">Jonas &#x2602;</span></h1>
+		<h1 class="pb-3 text-5xl">Hi</h1>
 		<p>
 			I'm studying computer science at the University of Michigan and have experience in backend development. I'm interested in infrastructure, distributed systems, and system architecture.
 		</p>

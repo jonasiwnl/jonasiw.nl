@@ -6,5 +6,4 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://jonasiwnl.github.io",
   integrations: [ tailwind(), ],
-  experimental: { assets: true },
 });

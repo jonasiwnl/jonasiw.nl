@@ -6,4 +6,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://jonasiwnl.github.io",
   integrations: [ tailwind(), ],
+  redirects: {
+    "/resume": "/Jonas_Groening_resume.pdf",
+  },
 });

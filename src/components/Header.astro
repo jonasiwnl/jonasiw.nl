@@ -4,15 +4,17 @@ import "../styles/index.css";
 ---
 
 <div class="flex justify-between">
-    <div class="header text-left font-bold text-lg">
+    <div class="header font-bold text-lg">
         <a href="/">Jonas Groening</a>
     </div>
-    <div class="header text-right mb-4">
-        <a class="align-top mr-1" href="/experience">/experience</a>
-        <a class="align-top mr-1" href="/education">/education</a>
-        <a class="align-top mr-1" href="/projects">/projects</a>
-        <!-- <a class="align-top mr-1" href="/blog">/blog</a> -->
-        <a class="align-top" href="/images">/images</a>
+    <div class="header flex flex-row mb-4 gap-2">
+        <div class="flex flex-row gap-2 flex-wrap">
+            <a class="align-top" href="/experience">/experience</a>
+            <a class="align-top" href="/education">/education</a>
+            <a class="align-top" href="/projects">/projects</a>
+            <!-- <a class="align-top" href="/blog">/blog</a> -->
+            <a class="align-top" href="/images">/images</a>
+        </div>
         <ToggleTheme />
     </div>
 </div>

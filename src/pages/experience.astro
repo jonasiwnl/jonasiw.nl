@@ -1,119 +1,72 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ExperienceEntry from "../components/ExperienceEntry.astro";
+
+const experiences = [
+    {
+        position: "Incoming Software Engineering Intern",
+        company: "Glean",
+        company_url: "https://glean.com/",
+        date: "May 2025 -- August 2025",
+        description: "",
+        tech_stack: ["TBD"],
+    },
+    {
+        position: "Software Engineering Intern",
+        company: "Courier Health",
+        company_url: "https://www.courierhealth.com/",
+        date: "September 2024 -- November 2024",
+        description: "Took a semester off to visit NYC and ship some code.",
+        tech_stack: ["TypeScript", "GraphQL", "AWS Lambda", "RDS/Postgres", "DynamoDB"]
+    },
+    {
+        position: "Software Engineering Intern",
+        company: "Vectra AI",
+        company_url: "https://www.vectra.ai",
+        date: "May 2024 -- August 2024",
+        description: "Forbes AI 50. Worked on some cool platform and backend stuff; all projects shipped to prod.",
+        tech_stack: ["Python", "Celery", "Terraform", "AWS S3", "Elasticache", "RDS/MariaDB", "K8S"]
+    },
+    {
+        position: "Platform Engineer",
+        company: "V1 Michigan",
+        company_url: "https://v1michigan.com",
+        date: "Jan 2024 -- May 2024",
+        description: "Shipping experiences for the largest builder community on campus.",
+        tech_stack: ["TypeScript", "NextJS", "Supabase"]
+    },
+    {
+        position: "Software Engineering Intern",
+        company: "CriTech Research",
+        company_url: "https://critech.com/",
+        date: "May 2023 -- August 2023",
+        description: "Worked on patient analytics infra.",
+        tech_stack: ["Python", "Flask", "MySQL", "Azure", "Terraform"]
+    },
+    {
+        position: "Software Engineer",
+        company: "UM Autonomous Robotic Vehicle",
+        company_url: "https://www.umarv.com/",
+        date: "September 2023 -- May 2023",
+        description: "Sensors team. Robots are difficult.",
+        tech_stack: ["Python", "C++", "ROS2", "Docker"]
+    },
+    {
+        position: "Building",
+        company: "Quarry.video",
+        company_url: "https://quarry.video",
+        date: "Jan 2023 -- May 2023",
+        description: "Fullstack design and development. Built product from 0 to 1.",
+        tech_stack: ["TypeScript", "NextJS", "Python", "Django", "MongoDB", "Docker", "Terraform"]
+    }
+];
 ---
 
 <Layout title="Jonas | Experience">
     <h1 class="text-2xl mb-4 underline">experience</h1>
-    <div class="flex mb-10">
-        <div class="text-box">
-            <h2 class="text-xl">Software Engineering Intern @ <a href="https://www.courierhealth.com/" target="_blank">Courier Health</a></h2>
-            <p>September 2024 -- November 2024</p>
-            <br />
-            <p>Took a semester off to visit NYC and ship some code.</p>
-        </div>
-        <div class="flex flex-col stack">
-            <h2 class="text-xl">Stack</h2>
-            <ul>
-                <li><p>TypeScript</p></li>
-                <li><p>GraphQL</p></li>
-                <li><p>AWS Lambda</p></li>
-                <li><p>RDS/Postgres</p></li>
-                <li><p>DynamoDB</p></li>
-            </ul>
-        </div>
-    </div>
-    <div class="flex mb-10">
-        <div class="text-box">
-            <h2 class="text-xl">Software Engineering Intern @ <a href="https://www.vectra.ai" target="_blank">Vectra AI</a></h2>
-            <p>May 2024 -- August 2024</p>
-            <br />
-            <p>Forbes AI 50. Worked on some cool platform and backend stuff; all projects shipped to prod.</p>
-        </div>
-        <div class="flex flex-col stack">
-            <h2 class="text-xl">Stack</h2>
-            <ul>
-                <li><p>Python</p></li>
-                <li><p>Celery</p></li>
-                <li><p>Terraform</p></li>
-                <li><p>AWS S3</p></li>
-                <li><p>Elasticache</p></li>
-                <li><p>RDS/MariaDB</p></li>
-                <li><p>K8S</p></li>
-            </ul>
-        </div>
-    </div>
-    <div class="flex mb-10">
-        <div class="text-box">
-            <h2 class="text-xl">Platform Engineer @ <a href="https://v1michigan.com" target="_blank">V1 Michigan</a></h2>
-            <p>Jan 2024 -- May 2024</p>
-            <br />
-            <p>Shipping experiences for the largest builder community on campus.</p>
-        </div>
-        <div class="flex flex-col stack">
-            <h2 class="text-xl">Stack</h2>
-            <ul>
-                <li><p>TypeScript</p></li>
-                <li><p>NextJS</p></li>
-                <li><p>Supabase</p></li>
-            </ul>
-        </div>
-    </div>
-    <div class="flex mb-10">
-        <div class="text-box">
-            <h2 class="text-xl">Software Engineering Intern @ <a href="https://critech.com/" target="_blank">CriTech Research</a></h2>
-            <p>May 2023 -- August 2023</p>
-            <br />
-            <p>Worked on patient analytics infra.</p>
-        </div>
-        <div class="flex flex-col stack">
-            <h2 class="text-xl">Stack</h2>
-            <ul>
-                <li><p>Python</p></li>
-                <li><p>Flask</p></li>
-                <li><p>MySQL</p></li>
-                <li><p>Azure</p></li>
-                <li><p>Terraform</p></li>
-            </ul>
-        </div>
-    </div>
-    <div class="flex mb-10">
-        <div class="text-box">
-            <h2 class="text-xl">Software Engineer @ <a href="https://www.umarv.com/" target="_blank">UM Autonomous Robotic Vehicle</a></h2>
-            <p>September 2023 -- May 2023</p>
-            <br />
-            <p>Sensors team. Robots are difficult.</p>
-        </div>
-        <div class="flex flex-col stack">
-            <h2 class="text-xl">Stack</h2>
-            <ul>
-                <li><p>Python</p></li>
-                <li><p>C++</p></li>
-                <li><p>ROS2</p></li>
-                <li><p>Docker</p></li>
-            </ul>
-        </div>
-    </div>
-    <div class="flex">
-        <div class="text-box">
-            <h2 class="text-xl">Building @ <a href="https://quarry.video" target="_blank">Quarry.video</a></h2>
-            <p>Jan 2023 -- May 2023</p>
-            <br />
-            <p>Fullstack design and development. Built product from 0 to 1.</p>
-        </div>
-        <div class="flex flex-col stack">
-            <h2 class="text-xl">Stack</h2>
-            <ul>
-                <li><p>TypeScript</p></li>
-                <li><p>NextJS</p></li>
-                <li><p>Python</p></li>
-                <li><p>Django</p></li>
-                <li><p>MongoDB</p></li>
-                <li><p>Docker</p></li>
-                <li><p>Terraform</p></li>
-            </ul>
-        </div>
-    </div>
-
+    {experiences.map(exp => (
+        <ExperienceEntry {...exp} />
+    ))}
     <div class="text-right my-12 header">
         <a href="#">back to top &#x2191;</a>
     </div>

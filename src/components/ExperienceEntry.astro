@@ -1,0 +1,29 @@
+---
+export interface Props {
+    position: string;
+    company: string;
+    company_url: string;
+    date: string;
+    description: string;
+    tech_stack: string[];
+}
+
+const { position, company, company_url, date, description, tech_stack } = Astro.props;
+---
+
+<div class="flex mb-10">
+    <div class="text-box">
+        <h2 class="text-xl">{position} @ <a href={company_url} target="_blank">{company}</a></h2>
+        <p>{date}</p>
+        <br />
+        <p>{description}</p>
+    </div>
+    <div class="flex flex-col stack">
+        <h2 class="text-xl">Stack</h2>
+        <ul>
+            {tech_stack.map(tech => (
+                <li><p>{tech}</p></li>
+            ))}
+        </ul>
+    </div>
+</div>

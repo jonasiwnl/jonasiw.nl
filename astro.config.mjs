@@ -8,5 +8,7 @@ export default defineConfig({
   integrations: [ tailwind(), ],
   redirects: {
     "/resume": "/Jonas_Groening_resume.pdf",
+    "/listen": "https://github.com/jonasiwnl/listen",
+    "/gethub": "https://gethub.deno.dev",
   },
 });

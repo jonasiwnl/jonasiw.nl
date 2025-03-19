@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://jonasiwnl.github.io",
+  site: "https://jonasiw.nl",
   integrations: [ tailwind(), ],
   redirects: {
     "/resume": "/Jonas_Groening_resume.pdf",

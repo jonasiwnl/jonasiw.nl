@@ -21,6 +21,9 @@ body {
 p {
     color: var(--p-color);
 }
+textarea {
+    color: var(--p-color);
+}
 p a {
     color: var(--pa-color);
 }

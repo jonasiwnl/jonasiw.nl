@@ -18,12 +18,4 @@ const { position, company, company_url, date, description, tech_stack } = Astro.
         <br />
         <p>{description}</p>
     </div>
-    <div class="flex flex-col stack">
-        <h2 class="text-xl">Stack</h2>
-        <ul>
-            {tech_stack.map(tech => (
-                <li><p>{tech}</p></li>
-            ))}
-        </ul>
-    </div>
 </div>

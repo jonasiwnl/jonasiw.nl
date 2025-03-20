@@ -76,14 +76,6 @@ const projects = [
                 <h2 class="text-xl">{project.title}</h2>
                 <p set:html={project.description} />
             </div>
-            <div class="stack">
-                <h2 class="text-xl">Stack</h2>
-                <ul>
-                    {project.stack.map(tech => (
-                        <li><p>{tech}</p></li>
-                    ))}
-                </ul>
-            </div>
         </div>
     ))}
 

@@ -24,6 +24,9 @@ p {
 p a {
     color: var(--pa-color);
 }
+p a li ul {
+    color: var(--pa-color);
+}
 h1 {
     color: var(--h2-color);
 }

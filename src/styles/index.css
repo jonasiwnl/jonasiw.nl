@@ -18,10 +18,13 @@ body {
     margin: 0 auto;
     padding-top: 1rem;
 }
-p {
+p,
+ul,
+li {
     color: var(--p-color);
 }
-p a {
+p a,
+li a {
     color: var(--pa-color);
 }
 p a li ul {

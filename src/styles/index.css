@@ -10,30 +10,6 @@
     font-family: "JetBrains Mono", monospace;
 }
 
-html::before,
-html::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: calc(50% - min(325px, 40%) - 6rem);
-    background-color: var(--p-color);
-    -webkit-mask-image: var(--dither-pattern);
-    mask-image: var(--dither-pattern);
-    -webkit-mask-repeat: repeat;
-    mask-repeat: repeat;
-    pointer-events: none;
-    z-index: -1;
-}
-
-html::before {
-    left: 0;
-}
-
-html::after {
-    right: 0;
-}
-
 body {
     width: 80%;
     max-width: 550px;

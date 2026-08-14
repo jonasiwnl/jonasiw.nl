@@ -1,11 +1,10 @@
 ---
-import ToggleTheme from "./ToggleTheme.astro";
 import "../styles/index.css";
 ---
 
 <div class="flex justify-between mb-3 mt-2">
     <div class="header font-bold text-lg mr-6">
-        <a href="/">Jonas Groening</a>
+        <button class="theme-name" type="button" aria-label="Toggle color theme" data-theme-toggle>Jonas Groening</button>
     </div>
     <div class="header flex flex-row mb-4 gap-2">
         <!-- <div class="flex flex-row gap-2 flex-wrap">
@@ -28,6 +27,5 @@ import "../styles/index.css";
                 <span class="block md:hidden">/imgs</span>
             </a> -->
         </div>
-        <!-- <ToggleTheme /> -->
     </div>
 </div>

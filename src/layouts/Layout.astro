@@ -18,6 +18,13 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/ico" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script is:inline>
+			try {
+				if (localStorage.getItem('theme') === 'light') {
+					document.documentElement.dataset.theme = 'light';
+				}
+			} catch {}
+		</script>
 	</head>
 	<body>
 		<canvas class="flow-field flow-field--left" aria-hidden="true"></canvas>
@@ -31,6 +38,29 @@ const { title } = Astro.props;
 <script>
 	import { createNoise3D } from 'simplex-noise';
 
+	const themeButtons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
+
+	function currentTheme() {
+		return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+	}
+
+	function updateThemeButton(button: HTMLButtonElement) {
+		button.setAttribute('aria-pressed', String(currentTheme() === 'light'));
+	}
+
+	themeButtons.forEach((button) => {
+		updateThemeButton(button);
+		button.addEventListener('click', () => {
+			const nextTheme = currentTheme() === 'dark' ? 'light' : 'dark';
+			document.documentElement.dataset.theme = nextTheme;
+			try {
+				localStorage.setItem('theme', nextTheme);
+			} catch {}
+			updateThemeButton(button);
+			window.dispatchEvent(new Event('themechange'));
+		});
+	});
+
 	const fields = document.querySelectorAll<HTMLCanvasElement>('.flow-field');
 	const pageSeed = crypto.getRandomValues(new Uint32Array(1))[0];
 
@@ -40,14 +70,21 @@ const { title } = Astro.props;
 
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const styles = getComputedStyle(document.documentElement);
-		const primary = styles.getPropertyValue('--p-color').trim() || '#46677e';
-		const muted = styles.getPropertyValue('--pa-color').trim() || '#a35a5e';
-		const highlight = styles.getPropertyValue('--h2-color').trim() || '#557664';
-		const accent = `rgb(${styles.getPropertyValue('--accent').trim() || '93, 126, 150'})`;
+		let primary = '';
+		let muted = '';
+		let highlight = '';
+		let accent = '';
 		const fieldSeed = pageSeed + fieldIndex;
 		const noise3D = createNoise3D(createRandom(fieldSeed));
 		let width = 0;
 		let height = 0;
+
+		function updateColors() {
+			primary = styles.getPropertyValue('--p-color').trim() || '#bebebe';
+			muted = styles.getPropertyValue('--pa-color').trim() || '#838080';
+			highlight = styles.getPropertyValue('--h2-color').trim() || '#dadada';
+			accent = `rgb(${styles.getPropertyValue('--accent').trim() || '205, 221, 228'})`;
+		}
 
 		function resize() {
 			const bounds = canvas.getBoundingClientRect();
@@ -98,10 +135,15 @@ const { title } = Astro.props;
 			if (!reducedMotion.matches) requestAnimationFrame(draw);
 		}
 
+		updateColors();
 		resize();
 		draw(0);
 		const resizeObserver = new ResizeObserver(resize);
 		resizeObserver.observe(canvas);
+		window.addEventListener('themechange', () => {
+			updateColors();
+			if (reducedMotion.matches) draw(performance.now());
+		});
 		reducedMotion.addEventListener('change', () => {
 			if (!reducedMotion.matches) requestAnimationFrame(draw);
 		});
@@ -119,6 +161,17 @@ const { title } = Astro.props;
 </script>
 <style is:global>
 	:root {
+		--accent: 205, 221, 228;
+		--background-color: #111217;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), var(--background-color) 30%, #bebebe 60%);
+		--p-color: #bebebe;
+		--pa-color: #838080;
+		--h2-color: #dadada;
+		--card-color: #45474f;
+		--toggle-button-shift: 0px;
+	}
+
+	[data-theme='light'] {
 		--accent: 93, 126, 150;
 		--background-color: #faf3e3;
 		--accent-gradient: linear-gradient(45deg, #557664, var(--background-color) 30%, var(--pa-color) 60%);
@@ -126,13 +179,13 @@ const { title } = Astro.props;
 		--pa-color: #a35a5e;
 		--h2-color: #557664;
 		--card-color: #e2e6dc;
-		--toggle-button-shift: 0px;
 	}
 
 	html {
 		font-family: system-ui, sans-serif;
 		background-color: var(--background-color);
 		scroll-behavior: smooth;
+		transition: background-color 0.25s ease;
 	}
 
 	.flow-field {

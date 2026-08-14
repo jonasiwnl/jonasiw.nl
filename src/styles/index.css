@@ -97,6 +97,23 @@ img {
 .header a:hover {
     color: var(--pa-color);
 }
+.theme-name {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.4s ease;
+}
+.theme-name:hover {
+    color: var(--pa-color);
+    text-decoration: underline;
+}
+.theme-name:focus-visible {
+    outline: 2px solid var(--h2-color);
+    outline-offset: 2px;
+}
 a {
     transition: color 0.4s ease;
 }

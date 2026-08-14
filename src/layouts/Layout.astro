@@ -16,15 +16,10 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="theme-color" content="#faf3e3" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<script is:inline>
-			try {
-				if (localStorage.getItem('theme') === 'light') {
-					document.documentElement.dataset.theme = 'light';
-				}
-			} catch {}
-		</script>
+		<style is:inline>html { background-color: #faf3e3; }</style>
 	</head>
 	<body>
 		<canvas class="flow-field flow-field--left" aria-hidden="true"></canvas>
@@ -41,7 +36,7 @@ const { title } = Astro.props;
 	const themeButtons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
 
 	function currentTheme() {
-		return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+		return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 	}
 
 	function updateThemeButton(button: HTMLButtonElement) {
@@ -51,11 +46,8 @@ const { title } = Astro.props;
 	themeButtons.forEach((button) => {
 		updateThemeButton(button);
 		button.addEventListener('click', () => {
-			const nextTheme = currentTheme() === 'dark' ? 'light' : 'dark';
+			const nextTheme = currentTheme() === 'light' ? 'dark' : 'light';
 			document.documentElement.dataset.theme = nextTheme;
-			try {
-				localStorage.setItem('theme', nextTheme);
-			} catch {}
 			updateThemeButton(button);
 			window.dispatchEvent(new Event('themechange'));
 		});
@@ -80,10 +72,10 @@ const { title } = Astro.props;
 		let height = 0;
 
 		function updateColors() {
-			primary = styles.getPropertyValue('--p-color').trim() || '#bebebe';
-			muted = styles.getPropertyValue('--pa-color').trim() || '#838080';
-			highlight = styles.getPropertyValue('--h2-color').trim() || '#dadada';
-			accent = `rgb(${styles.getPropertyValue('--accent').trim() || '205, 221, 228'})`;
+			primary = styles.getPropertyValue('--p-color').trim() || '#46677e';
+			muted = styles.getPropertyValue('--pa-color').trim() || '#a35a5e';
+			highlight = styles.getPropertyValue('--h2-color').trim() || '#557664';
+			accent = `rgb(${styles.getPropertyValue('--accent').trim() || '93, 126, 150'})`;
 		}
 
 		function resize() {
@@ -161,17 +153,6 @@ const { title } = Astro.props;
 </script>
 <style is:global>
 	:root {
-		--accent: 205, 221, 228;
-		--background-color: #111217;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), var(--background-color) 30%, #bebebe 60%);
-		--p-color: #bebebe;
-		--pa-color: #838080;
-		--h2-color: #dadada;
-		--card-color: #45474f;
-		--toggle-button-shift: 0px;
-	}
-
-	[data-theme='light'] {
 		--accent: 93, 126, 150;
 		--background-color: #faf3e3;
 		--accent-gradient: linear-gradient(45deg, #557664, var(--background-color) 30%, var(--pa-color) 60%);
@@ -179,6 +160,17 @@ const { title } = Astro.props;
 		--pa-color: #a35a5e;
 		--h2-color: #557664;
 		--card-color: #e2e6dc;
+		--toggle-button-shift: 0px;
+	}
+
+	[data-theme='dark'] {
+		--accent: 205, 221, 228;
+		--background-color: #111217;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), var(--background-color) 30%, #bebebe 60%);
+		--p-color: #bebebe;
+		--pa-color: #838080;
+		--h2-color: #dadada;
+		--card-color: #45474f;
 	}
 
 	html {

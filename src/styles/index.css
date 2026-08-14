@@ -65,6 +65,16 @@ ul,
 li {
     color: var(--p-color);
 }
+
+.content-stack {
+    display: grid;
+    gap: 1rem;
+}
+
+.content-stack > :is(p, ul) {
+    margin: 0;
+}
+
 p a,
 li a {
     color: var(--pa-color);

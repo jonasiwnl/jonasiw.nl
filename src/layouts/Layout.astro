@@ -29,6 +29,8 @@ const { title } = Astro.props;
 	</body>
 </html>
 <script>
+	import { createNoise3D } from 'simplex-noise';
+
 	const fields = document.querySelectorAll<HTMLCanvasElement>('.flow-field');
 
 	fields.forEach((canvas, fieldIndex) => {
@@ -41,6 +43,7 @@ const { title } = Astro.props;
 		const muted = styles.getPropertyValue('--pa-color').trim() || '#838080';
 		const highlight = styles.getPropertyValue('--h2-color').trim() || '#dadada';
 		const accent = `rgb(${styles.getPropertyValue('--accent').trim() || '205, 221, 228'})`;
+		const noise3D = createNoise3D(createRandom(0x1a2b3c4d + fieldIndex));
 		let width = 0;
 		let height = 0;
 		let previousFrame = -Infinity;
@@ -56,11 +59,7 @@ const { title } = Astro.props;
 		}
 
 		function fieldAngle(x: number, y: number, time: number) {
-			return (
-				Math.sin(x * 0.012 + y * 0.003 + time + fieldIndex * 1.7) * 1.3 +
-				Math.cos(y * 0.009 - time * 0.7) * 1.1 +
-				Math.sin((x - y) * 0.004 + time * 0.5) * 0.7
-			);
+			return noise3D(x * 0.004, y * 0.004, time) * Math.PI * 2;
 		}
 
 		function draw(frameTime: number) {
@@ -74,15 +73,16 @@ const { title } = Astro.props;
 			const random = createRandom(0x1a2b3c4d + fieldIndex);
 			const columns = Math.max(1, Math.ceil(width / 36));
 			const rows = Math.max(1, Math.ceil(height / 56));
-			const time = frameTime * 0.00002;
+			const time = frameTime * 0.000025;
 
 			for (let row = 0; row < rows; row++) {
 				for (let column = 0; column < columns; column++) {
 					let x = (column + random() * 0.9) * 36;
 					let y = (row + random() * 0.9) * 56;
 					const colorRoll = random();
-					context.fillStyle = colorRoll > 0.86 ? accent : colorRoll > 0.5 ? primary : muted;
-					context.globalAlpha = colorRoll > 0.86 ? 0.5 : colorRoll > 0.5 ? 0.6 : 0.46;
+					context.fillStyle =
+						colorRoll > 0.92 ? accent : colorRoll > 0.82 ? highlight : colorRoll > 0.42 ? primary : muted;
+					context.globalAlpha = colorRoll > 0.92 ? 0.5 : colorRoll > 0.42 ? 0.6 : 0.46;
 					const radius = 0.9 + random() * 0.65;
 					context.beginPath();
 

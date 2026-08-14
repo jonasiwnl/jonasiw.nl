@@ -46,7 +46,6 @@ const { title } = Astro.props;
 		const noise3D = createNoise3D(createRandom(0x1a2b3c4d + fieldIndex));
 		let width = 0;
 		let height = 0;
-		let previousFrame = -Infinity;
 
 		function resize() {
 			const bounds = canvas.getBoundingClientRect();
@@ -63,17 +62,11 @@ const { title } = Astro.props;
 		}
 
 		function draw(frameTime: number) {
-			if (frameTime - previousFrame < 80 && !reducedMotion.matches) {
-				requestAnimationFrame(draw);
-				return;
-			}
-
-			previousFrame = frameTime;
 			context.clearRect(0, 0, width, height);
 			const random = createRandom(0x1a2b3c4d + fieldIndex);
 			const columns = Math.max(1, Math.ceil(width / 36));
 			const rows = Math.max(1, Math.ceil(height / 56));
-			const time = frameTime * 0.000025;
+			const time = frameTime * 0.000003;
 
 			for (let row = 0; row < rows; row++) {
 				for (let column = 0; column < columns; column++) {
@@ -108,7 +101,6 @@ const { title } = Astro.props;
 		const resizeObserver = new ResizeObserver(resize);
 		resizeObserver.observe(canvas);
 		reducedMotion.addEventListener('change', () => {
-			previousFrame = -Infinity;
 			if (!reducedMotion.matches) requestAnimationFrame(draw);
 		});
 	});

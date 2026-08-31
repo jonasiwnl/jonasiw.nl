@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: "JetBrains Mono";
-    src: url("/font/JetBrainsMonoNL-Regular.ttf") format("truetype"),
-        url("/font/JetBrainsMono-Regular.woff2") format("woff2");
+    font-family: "Lora";
+    src: url("/font/Lora-Variable.ttf") format("truetype");
+    font-weight: 400 700;
+    font-display: swap;
 }
 
 * {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Lora", serif;
 }
 
 body {

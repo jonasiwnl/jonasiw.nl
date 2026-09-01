@@ -55,89 +55,83 @@ const { title } = Astro.props;
 
 	const fields = document.querySelectorAll<HTMLCanvasElement>('.flow-field');
 	const pageSeed = crypto.getRandomValues(new Uint32Array(1))[0];
+	const palette = ['#eee8d5', '#075364', '#16756e', '#104e45', '#efbf58', '#d64b48'];
+	const noise3D = createNoise3D(createRandom(pageSeed));
 
 	fields.forEach((canvas, fieldIndex) => {
 		const context = canvas.getContext('2d');
 		if (!context) return;
 
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-		const styles = getComputedStyle(document.documentElement);
-		let primary = '';
-		let muted = '';
-		let highlight = '';
-		let accent = '';
 		const fieldSeed = pageSeed + fieldIndex;
-		const noise3D = createNoise3D(createRandom(fieldSeed));
 		let width = 0;
 		let height = 0;
-
-		function updateColors() {
-			primary = styles.getPropertyValue('--p-color').trim() || '#46677e';
-			muted = styles.getPropertyValue('--pa-color').trim() || '#a35a5e';
-			highlight = styles.getPropertyValue('--h2-color').trim() || '#557664';
-			accent = `rgb(${styles.getPropertyValue('--accent').trim() || '93, 126, 150'})`;
-		}
+		let offsetX = 0;
+		let animationFrame = 0;
 
 		function resize() {
 			const bounds = canvas.getBoundingClientRect();
 			const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 			width = bounds.width;
 			height = bounds.height;
+			offsetX = bounds.left;
 			canvas.width = Math.floor(width * pixelRatio);
 			canvas.height = Math.floor(height * pixelRatio);
 			context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-		}
-
-		function fieldAngle(x: number, y: number, time: number) {
-			return noise3D(x * 0.004, y * 0.004, time) * Math.PI * 2;
+			cancelAnimationFrame(animationFrame);
+			draw(performance.now());
 		}
 
 		function draw(frameTime: number) {
 			context.clearRect(0, 0, width, height);
+			if (width < 30 || height < 30) return;
+
 			const random = createRandom(fieldSeed);
-			const columns = Math.max(1, Math.ceil(width / 36));
-			const rows = Math.max(1, Math.ceil(height / 56));
+			const paths = palette.map(() => new Path2D());
+			const spacing = 9.5;
 			const time = frameTime * 0.000003;
+			const phase = (pageSeed % 6283) / 1000;
+			let bandRows = 0;
+			let color = 0;
 
-			for (let row = 0; row < rows; row++) {
-				for (let column = 0; column < columns; column++) {
-					let x = (column + random() * 0.9) * 36;
-					let y = (row + random() * 0.9) * 56;
+			for (let row = -280; row < height + 280; row += spacing) {
+				if (bandRows-- <= 0) {
 					const colorRoll = random();
-					context.fillStyle =
-						colorRoll > 0.92 ? accent : colorRoll > 0.82 ? highlight : colorRoll > 0.42 ? primary : muted;
-					context.globalAlpha = colorRoll > 0.92 ? 0.5 : colorRoll > 0.42 ? 0.6 : 0.46;
-					const radius = 0.9 + random() * 0.65;
-					context.beginPath();
+					color = colorRoll < 0.55 ? 0 : colorRoll < 0.8 ? 1 : colorRoll < 0.92 ? 2 : 3;
+					bandRows = 1 + Math.floor(random() * 6);
+				}
+				const accentStart = random() < 0.16 ? random() * width : -100;
+				const accentLength = 20 + random() * 45;
+				const accentColor = random() < 0.8 ? 4 : 5;
+				const stagger = random() * spacing;
 
-					for (let step = 0; step < 110; step++) {
-						if (x < -radius || x > width + radius || y < -radius || y > height + radius) break;
-						context.moveTo(x + radius, y);
-						context.arc(x, y, radius, 0, Math.PI * 2);
-						const angle = fieldAngle(x, y, time);
-						x += Math.cos(angle) * 3.7;
-						y += Math.sin(angle) * 3.7;
-					}
-
-					context.fill();
+				for (let column = 12 + stagger; column < width - 12; column += spacing) {
+					const globalX = offsetX + column;
+					const x = column + (random() - 0.5) * 0.9;
+					const y = row + Math.sin(globalX * 0.0024 + phase + time * 0.25) * 190
+						+ noise3D(globalX * 0.0017, row * 0.00065, time) * 65
+						+ (random() - 0.5) * 0.9;
+					const radius = 3.1 + random() * 0.6;
+					if (y < 12 || y > height - 12) continue;
+					const path = paths[column >= accentStart && column < accentStart + accentLength ? accentColor : color];
+					path.moveTo(x + radius, y);
+					path.arc(x, y, radius, 0, Math.PI * 2);
 				}
 			}
 
-			context.globalAlpha = 1;
-			if (!reducedMotion.matches) requestAnimationFrame(draw);
+			paths.forEach((path, index) => {
+				context.fillStyle = palette[index];
+				context.fill(path);
+			});
+			if (!reducedMotion.matches) animationFrame = requestAnimationFrame(draw);
 		}
 
-		updateColors();
 		resize();
-		draw(0);
 		const resizeObserver = new ResizeObserver(resize);
 		resizeObserver.observe(canvas);
-		window.addEventListener('themechange', () => {
-			updateColors();
-			if (reducedMotion.matches) draw(performance.now());
-		});
 		reducedMotion.addEventListener('change', () => {
-			if (!reducedMotion.matches) requestAnimationFrame(draw);
+			cancelAnimationFrame(animationFrame);
+			draw(performance.now());
 		});
 	});
 
@@ -181,6 +175,7 @@ const { title } = Astro.props;
 
 	.flow-field {
 		position: fixed;
+		background-color: #292a27;
 		top: 0;
 		height: 100vh;
 		height: 100dvh;

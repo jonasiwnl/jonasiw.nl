@@ -22,8 +22,6 @@ const { title } = Astro.props;
 		<style is:inline>html { background-color: #faf3e3; }</style>
 	</head>
 	<body>
-		<canvas class="flow-field flow-field--left" aria-hidden="true"></canvas>
-		<canvas class="flow-field flow-field--right" aria-hidden="true"></canvas>
 		<main>
 			<Header />
 			<slot />
@@ -31,8 +29,6 @@ const { title } = Astro.props;
 	</body>
 </html>
 <script>
-	import { createNoise3D } from 'simplex-noise';
-
 	const themeButtons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
 
 	function currentTheme() {
@@ -49,107 +45,8 @@ const { title } = Astro.props;
 			const nextTheme = currentTheme() === 'light' ? 'dark' : 'light';
 			document.documentElement.dataset.theme = nextTheme;
 			updateThemeButton(button);
-			window.dispatchEvent(new Event('themechange'));
 		});
 	});
-
-	const fields = document.querySelectorAll<HTMLCanvasElement>('.flow-field');
-	const pageSeed = crypto.getRandomValues(new Uint32Array(1))[0];
-
-	fields.forEach((canvas, fieldIndex) => {
-		const context = canvas.getContext('2d');
-		if (!context) return;
-
-		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-		const styles = getComputedStyle(document.documentElement);
-		let primary = '';
-		let muted = '';
-		let highlight = '';
-		let accent = '';
-		const fieldSeed = pageSeed + fieldIndex;
-		const noise3D = createNoise3D(createRandom(fieldSeed));
-		let width = 0;
-		let height = 0;
-
-		function updateColors() {
-			primary = styles.getPropertyValue('--p-color').trim() || '#46677e';
-			muted = styles.getPropertyValue('--pa-color').trim() || '#a35a5e';
-			highlight = styles.getPropertyValue('--h2-color').trim() || '#557664';
-			accent = `rgb(${styles.getPropertyValue('--accent').trim() || '93, 126, 150'})`;
-		}
-
-		function resize() {
-			const bounds = canvas.getBoundingClientRect();
-			const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-			width = bounds.width;
-			height = bounds.height;
-			canvas.width = Math.floor(width * pixelRatio);
-			canvas.height = Math.floor(height * pixelRatio);
-			context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-		}
-
-		function fieldAngle(x: number, y: number, time: number) {
-			return noise3D(x * 0.004, y * 0.004, time) * Math.PI * 2;
-		}
-
-		function draw(frameTime: number) {
-			context.clearRect(0, 0, width, height);
-			const random = createRandom(fieldSeed);
-			const columns = Math.max(1, Math.ceil(width / 36));
-			const rows = Math.max(1, Math.ceil(height / 56));
-			const time = frameTime * 0.000003;
-
-			for (let row = 0; row < rows; row++) {
-				for (let column = 0; column < columns; column++) {
-					let x = (column + random() * 0.9) * 36;
-					let y = (row + random() * 0.9) * 56;
-					const colorRoll = random();
-					context.fillStyle =
-						colorRoll > 0.92 ? accent : colorRoll > 0.82 ? highlight : colorRoll > 0.42 ? primary : muted;
-					context.globalAlpha = colorRoll > 0.92 ? 0.5 : colorRoll > 0.42 ? 0.6 : 0.46;
-					const radius = 0.9 + random() * 0.65;
-					context.beginPath();
-
-					for (let step = 0; step < 110; step++) {
-						if (x < -radius || x > width + radius || y < -radius || y > height + radius) break;
-						context.moveTo(x + radius, y);
-						context.arc(x, y, radius, 0, Math.PI * 2);
-						const angle = fieldAngle(x, y, time);
-						x += Math.cos(angle) * 3.7;
-						y += Math.sin(angle) * 3.7;
-					}
-
-					context.fill();
-				}
-			}
-
-			context.globalAlpha = 1;
-			if (!reducedMotion.matches) requestAnimationFrame(draw);
-		}
-
-		updateColors();
-		resize();
-		draw(0);
-		const resizeObserver = new ResizeObserver(resize);
-		resizeObserver.observe(canvas);
-		window.addEventListener('themechange', () => {
-			updateColors();
-			if (reducedMotion.matches) draw(performance.now());
-		});
-		reducedMotion.addEventListener('change', () => {
-			if (!reducedMotion.matches) requestAnimationFrame(draw);
-		});
-	});
-
-	function createRandom(seed: number) {
-		return () => {
-			seed |= 0;
-			seed = (seed + 0x6d2b79f5) | 0;
-			let value = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-			value = (value + Math.imul(value ^ (value >>> 7), 61 | value)) ^ value;
-			return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
-		};
-	}
 </script>
 <style is:global>
 	:root {
@@ -177,28 +74,5 @@ const { title } = Astro.props;
 		background-color: var(--background-color);
 		scroll-behavior: smooth;
 		transition: background-color 0.25s ease;
-	}
-
-	.flow-field {
-		position: fixed;
-		top: 0;
-		height: 100vh;
-		height: 100dvh;
-		width: max(0px, calc(50% - min(325px, 40%) - 6rem));
-		pointer-events: none;
-		z-index: 0;
-	}
-
-	.flow-field--left {
-		left: 0;
-	}
-
-	.flow-field--right {
-		right: 0;
-	}
-
-	main {
-		position: relative;
-		z-index: 1;
 	}
 </style>

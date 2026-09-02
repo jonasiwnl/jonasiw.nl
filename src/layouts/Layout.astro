@@ -55,7 +55,6 @@ const { title } = Astro.props;
 
 	const fields = document.querySelectorAll<HTMLCanvasElement>('.flow-field');
 	const pageSeed = crypto.getRandomValues(new Uint32Array(1))[0];
-	const palette = ['#eee8d5', '#075364', '#16756e', '#104e45', '#efbf58', '#d64b48'];
 	const noise3D = createNoise3D(createRandom(pageSeed));
 
 	fields.forEach((canvas, fieldIndex) => {
@@ -64,10 +63,18 @@ const { title } = Astro.props;
 
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const fieldSeed = pageSeed + fieldIndex;
+		let palette: string[] = [];
 		let width = 0;
 		let height = 0;
 		let offsetX = 0;
 		let animationFrame = 0;
+
+		function updateColors() {
+			const styles = getComputedStyle(document.documentElement);
+			palette = ['--p-color', '--pa-color', '--h2-color', '--card-color']
+				.map((property) => styles.getPropertyValue(property).trim());
+			palette.push(`rgb(${styles.getPropertyValue('--accent').trim()})`);
+		}
 
 		function resize() {
 			const bounds = canvas.getBoundingClientRect();
@@ -89,7 +96,7 @@ const { title } = Astro.props;
 			const random = createRandom(fieldSeed);
 			const paths = palette.map(() => new Path2D());
 			const spacing = 9.5;
-			const time = frameTime * 0.000003;
+			const time = reducedMotion.matches ? 0 : frameTime * 0.00003;
 			const phase = (pageSeed % 6283) / 1000;
 			let bandRows = 0;
 			let color = 0;
@@ -102,7 +109,7 @@ const { title } = Astro.props;
 				}
 				const accentStart = random() < 0.16 ? random() * width : -100;
 				const accentLength = 20 + random() * 45;
-				const accentColor = random() < 0.8 ? 4 : 5;
+				const accentColor = random() < 0.8 ? 4 : 2;
 				const stagger = random() * spacing;
 
 				for (let column = 12 + stagger; column < width - 12; column += spacing) {
@@ -126,9 +133,14 @@ const { title } = Astro.props;
 			if (!reducedMotion.matches) animationFrame = requestAnimationFrame(draw);
 		}
 
+		updateColors();
 		resize();
 		const resizeObserver = new ResizeObserver(resize);
 		resizeObserver.observe(canvas);
+		window.addEventListener('themechange', () => {
+			updateColors();
+			if (reducedMotion.matches) draw(performance.now());
+		});
 		reducedMotion.addEventListener('change', () => {
 			cancelAnimationFrame(animationFrame);
 			draw(performance.now());
@@ -175,7 +187,6 @@ const { title } = Astro.props;
 
 	.flow-field {
 		position: fixed;
-		background-color: #292a27;
 		top: 0;
 		height: 100vh;
 		height: 100dvh;

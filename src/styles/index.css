@@ -16,25 +16,8 @@ body {
     max-width: 550px;
     margin: 0 auto;
     padding-top: 1rem;
+    padding-bottom: 14rem;
     position: relative;
-}
-
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: var(--p-color);
-}
-
-body::before {
-    left: calc(50% - min(325px, 40%) - 6rem);
-}
-
-body::after {
-    right: calc(50% - min(325px, 40%) - 6rem);
 }
 
 p,

@@ -22,8 +22,7 @@ const { title } = Astro.props;
 		<style is:inline>html { background-color: #faf3e3; }</style>
 	</head>
 	<body>
-		<canvas class="flow-field flow-field--left" aria-hidden="true"></canvas>
-		<canvas class="flow-field flow-field--right" aria-hidden="true"></canvas>
+		<canvas class="flow-field" aria-hidden="true"></canvas>
 		<main>
 			<Header />
 			<slot />
@@ -189,23 +188,27 @@ const { title } = Astro.props;
 		opacity: 0.65;
 		mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
 		top: 0;
+		left: 0;
 		height: 100vh;
 		height: 100dvh;
-		width: max(0px, calc(50% - min(325px, 40%) - 6rem));
+		width: 100%;
 		pointer-events: none;
 		z-index: 0;
-	}
-
-	.flow-field--left {
-		left: 0;
-	}
-
-	.flow-field--right {
-		right: 0;
 	}
 
 	main {
 		position: relative;
 		z-index: 1;
+	}
+
+	body > main::before {
+		content: '';
+		position: absolute;
+		inset: -1rem calc(-1 * clamp(1rem, 6vw, 6rem)) -2rem;
+		background-color: var(--background-color);
+		box-shadow: 0 0 2rem 1rem var(--background-color);
+		transition: background-color 0.25s ease, box-shadow 0.25s ease;
+		pointer-events: none;
+		z-index: -1;
 	}
 </style>

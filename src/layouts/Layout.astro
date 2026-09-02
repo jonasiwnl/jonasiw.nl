@@ -75,8 +75,9 @@ const { title } = Astro.props;
 
 		function updateColors() {
 			const styles = getComputedStyle(document.documentElement);
-			palette = ['--p-color', '--h2-color']
+			palette = ['--p-color', '--pa-color', '--h2-color', '--card-color']
 				.map((property) => styles.getPropertyValue(property).trim());
+			palette.push(`rgb(${styles.getPropertyValue('--accent').trim()})`);
 		}
 
 		function resize() {
@@ -102,19 +103,19 @@ const { title } = Astro.props;
 			const time = reducedMotion.matches ? 0 : frameTime * 0.001;
 
 			for (let row = -280; row < height + 280; row += spacing * 1.5) {
-				const path = paths[random() < 0.9 ? 0 : 1];
 				const stagger = random() * spacing;
 				const drift = time * speed * (0.65 + Math.sin(row * 0.004 + phase) * 0.08);
 
 				for (let column = 0; column < travelWidth; column += spacing) {
+					const path = paths[Math.floor(random() * paths.length)];
 					const position = ((column + stagger + drift) % travelWidth + travelWidth) % travelWidth - spacing;
 					const wave = waveNumber * (position - speed * time) + phase + row * 0.0007;
 					const swell = waveNumber * (position * 0.57 - speed * time * 0.75) + swellPhase - row * 0.0005;
-					const x = position + Math.cos(wave) * 7 + Math.cos(swell) * 4 + (random() - 0.5) * 0.9;
+					const x = position + Math.cos(wave) * 7 + Math.cos(swell) * 4 + (random() - 0.5) * 4;
 					const y = row + Math.sin(wave) * 110 + Math.sin(swell) * 55
 						+ noise3D(position * 0.0017, row * 0.00065, 0) * 45
-						+ (random() - 0.5) * 0.9;
-					const radius = 1.65 + random() * 0.2;
+						+ (random() - 0.5) * 4;
+					const radius = 1.15 + random() * 1.2;
 					if (x < 12 || x > width - 12 || y < 12 || y > height - 12) continue;
 					path.moveTo(x + radius, y);
 					path.arc(x, y, radius, 0, Math.PI * 2);
